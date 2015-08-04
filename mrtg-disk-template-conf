@@ -1,0 +1,16 @@
+#
+#Disk ${DESC} usage
+#
+Target[${SETUP}.${INDEX}diskusage]:hrStorageUsed.${INDEX}&hrStorageSize.${INDEX}:${SNMPCOMMUNITY}@${SETUP}
+MaxBytes[${SETUP}.${INDEX}diskusage]: 10000000000
+Factor[${SETUP}.${INDEX}diskusage]: ${FACTOR}
+Title[${SETUP}.${INDEX}diskusage]:  partition ${DESC} disk usage
+ShortLegend[${SETUP}.${INDEX}diskusage]: B
+YLegend[${SETUP}.${INDEX}diskusage]: Bytes
+Legend1[${SETUP}.${INDEX}diskusage]: Used
+Legend2[${SETUP}.${INDEX}diskusage]: TotalSize
+LegendI[${SETUP}.${INDEX}diskusage]: Used
+LegendO[${SETUP}.${INDEX}diskusage]: TotalSize
+kMG[${SETUP}.${INDEX}diskusage]: K,M,G,T,P
+Options[${SETUP}.${INDEX}diskusage]: gauge,growright,nopercent
+

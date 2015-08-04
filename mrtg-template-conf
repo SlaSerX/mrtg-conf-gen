@@ -1,0 +1,498 @@
+RunAsDaemon: Yes
+#PathAdd: /usr/local/rrdtool-1.2.30/bin
+#LibAdd: /usr/local/rrdtool-1.2.30/lib/perl/5.10.1/x86_64-linux-thread-multi
+LibAdd: /usr/lib64/perl5/5.10.0/x86_64-linux-thread-multi
+LoadMIBs: /usr/share/snmp/mibs/HOST-RESOURCES-MIB.txt,/usr/share/snmp/mibs/TCP-MIB.txt,/usr/share/snmp/mibs/UDP-MIB.txt,/usr/share/snmp/mibs/IF-MIB.txt,/usr/share/snmp/mibs/UCD-SNMP-MIB.txt
+#Refresh: 300
+Interval: 1
+#WorkDir: /var/www/rrd
+WorkDir: /tmp
+LogFormat: rrdtool
+
+
+Target[${SETUP}.cpuuser]: ssCpuRawUser.0&ssCpuRawUser.0:${SNMPCOMMUNITY}@${SETUP}:::::2
+Title[${SETUP}.cpuuser]: CPU Usage-user ${SETUP}
+MaxBytes[${SETUP}.cpuuser]: ${MAXCPU}
+#AbsMax[${SETUP}.cpuuser]: 100
+PageTop[${SETUP}.cpuuser]: null
+LegendI[${SETUP}.cpuuser]: user:
+Options[${SETUP}.cpuuser]: growright,noo,nopercent
+YLegend[${SETUP}.cpuuser]: percent
+ShortLegend[${SETUP}.cpuuser]: %
+Legend1[${SETUP}.cpuuser]: user
+Legend3[${SETUP}.cpuuser]: Peak utilisation
+SetEnv[${SETUP}.cpuuser]: MRTG_INT_DESCR="CPU (user)"
+routers.cgi*Mode[${SETUP}.cpuuser]: cpu
+routers.cgi*Options[${SETUP}.cpuuser]: fixunit,nototal
+routers.cgi*Icon[${SETUP}.cpuuser]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.cpuuser]: no
+routers.cgi*InCompact[${SETUP}.cpuuser]: no
+routers.cgi*InSummary[${SETUP}.cpuuser]: no
+routers.cgi*Graph[${SETUP}.cpuuser]: userdefinedCPU total
+
+
+Target[${SETUP}.cpunice]: ssCpuRawNice.0&ssCpuRawNice.0:${SNMPCOMMUNITY}@${SETUP}:::::2
+Title[${SETUP}.cpunice]: CPU Usage-nice ${SETUP}
+MaxBytes[${SETUP}.cpunice]: ${MAXCPU}
+PageTop[${SETUP}.cpunice]: null
+LegendI[${SETUP}.cpunice]: nice:
+Options[${SETUP}.cpunice]: growright,noo,nopercent
+YLegend[${SETUP}.cpunice]: percent
+ShortLegend[${SETUP}.cpunice]: %
+Legend1[${SETUP}.cpunice]: nice
+Legend3[${SETUP}.cpunice]: Peak utilisation
+SetEnv[${SETUP}.cpunice]: MRTG_INT_DESCR="CPU (nice)"
+routers.cgi*Mode[${SETUP}.cpunice]: cpu
+routers.cgi*Options[${SETUP}.cpunice]: fixunit,nototal
+routers.cgi*Icon[${SETUP}.cpunice]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.cpunice]: no
+routers.cgi*InCompact[${SETUP}.cpunice]: no
+routers.cgi*InSummary[${SETUP}.cpunice]: no
+routers.cgi*Graph[${SETUP}.cpunice]: userdefinedCPU total
+
+#
+#The number of 'ticks' (typically 1/100s) spent
+#waiting for IO.
+#
+Target[${SETUP}.cpuwait]: ssCpuRawWait.0&ssCpuRawWait.0:${SNMPCOMMUNITY}@${SETUP}:::::2
+Title[${SETUP}.cpuwait]: CPU Usage-IOWait ${SETUP}
+MaxBytes[${SETUP}.cpuwait]: ${MAXCPU}
+PageTop[${SETUP}.cpuwait]: null
+LegendI[${SETUP}.cpuwait]: IOWait:
+Options[${SETUP}.cpuwait]: growright,noo,nopercent
+YLegend[${SETUP}.cpuwait]: percent
+ShortLegend[${SETUP}.cpuwait]: %
+Legend1[${SETUP}.cpuwait]: IOWait
+Legend3[${SETUP}.cpuwait]: Peak utilisation
+SetEnv[${SETUP}.cpuwait]: MRTG_INT_DESCR="CPU (IOWait)"
+routers.cgi*Mode[${SETUP}.cpuwait]: cpu
+routers.cgi*Options[${SETUP}.cpuwait]: fixunit,nototal
+routers.cgi*Icon[${SETUP}.cpuwait]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.cpuwait]: no
+routers.cgi*InCompact[${SETUP}.cpuwait]: no
+routers.cgi*InSummary[${SETUP}.cpuwait]: no
+routers.cgi*Graph[${SETUP}.cpuwait]: userdefinedCPU total
+
+#
+#The number of 'ticks' (typically 1/100s) spent
+#processing system-level code.
+#
+Target[${SETUP}.cpusystem]: ssCpuRawSystem.0&ssCpuRawSystem.0:${SNMPCOMMUNITY}@${SETUP}:::::2
+Title[${SETUP}.cpusystem]: CPU Usage-system
+MaxBytes[${SETUP}.cpusystem]: ${MAXCPU}
+PageTop[${SETUP}.cpusystem]: null
+LegendI[${SETUP}.cpusystem]: system:
+Options[${SETUP}.cpusystem]: growright,noo,nopercent
+YLegend[${SETUP}.cpusystem]: percent
+ShortLegend[${SETUP}.cpusystem]: %
+Legend1[${SETUP}.cpusystem]: system
+Legend3[${SETUP}.cpusystem]: Peak utilisation
+SetEnv[${SETUP}.cpusystem]: MRTG_INT_DESCR="CPU (system)"
+routers.cgi*Mode[${SETUP}.cpusystem]: cpu
+routers.cgi*Options[${SETUP}.cpusystem]: fixunit,nototal
+routers.cgi*Icon[${SETUP}.cpusystem]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.cpusystem]: no
+routers.cgi*InCompact[${SETUP}.cpusystem]: no
+routers.cgi*InSummary[${SETUP}.cpusystem]: no
+routers.cgi*Graph[${SETUP}.cpusystem]: userdefinedCPU total
+
+#
+#The number of 'ticks' (typically 1/100s) spent
+#processing hardware interrupts.
+#
+Target[${SETUP}.cpuinterrupt]: ssCpuRawInterrupt.0&ssCpuRawInterrupt.0:${SNMPCOMMUNITY}@${SETUP}:::::2
+Title[${SETUP}.cpuinterrupt]: CPU Usage-Interrupt
+MaxBytes[${SETUP}.cpuinterrupt]: ${MAXCPU}
+PageTop[${SETUP}.cpuinterrupt]: null
+LegendI[${SETUP}.cpuinterrupt]: Interrupt:
+Options[${SETUP}.cpuinterrupt]: growright,noo,nopercent
+YLegend[${SETUP}.cpuinterrupt]: percent
+ShortLegend[${SETUP}.cpuinterrupt]: %
+Legend1[${SETUP}.cpuinterrupt]: Interrupt
+Legend3[${SETUP}.cpuinterrupt]: Peak utilisation
+SetEnv[${SETUP}.cpuinterrupt]: MRTG_INT_DESCR="CPU (Interrupt)"
+routers.cgi*Mode[${SETUP}.cpuinterrupt]: cpu
+routers.cgi*Options[${SETUP}.cpuinterrupt]: fixunit,nototal
+routers.cgi*Icon[${SETUP}.cpuinterrupt]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.cpuinterrupt]: no
+routers.cgi*InCompact[${SETUP}.cpuinterrupt]: no
+routers.cgi*InSummary[${SETUP}.cpuinterrupt]: no
+routers.cgi*Graph[${SETUP}.cpuinterrupt]: userdefinedCPU total
+
+#
+#The number of 'ticks' (typically 1/100s) spent
+#processing software interrupts.
+#
+Target[${SETUP}.cpusoftirq]: ssCpuRawSoftIRQ.0&ssCpuRawSoftIRQ.0:${SNMPCOMMUNITY}@${SETUP}:::::2
+Title[${SETUP}.cpusoftirq]: CPU Usage-SoftIRQ
+MaxBytes[${SETUP}.cpusoftirq]: ${MAXCPU}
+PageTop[${SETUP}.cpusoftirq]: null
+LegendI[${SETUP}.cpusoftirq]: SoftIRQ:
+Options[${SETUP}.cpusoftirq]: growright,noo,nopercent
+YLegend[${SETUP}.cpusoftirq]: percent
+ShortLegend[${SETUP}.cpusoftirq]: %
+Legend1[${SETUP}.cpusoftirq]: SoftIRQ
+Legend3[${SETUP}.cpusoftirq]: Peak utilisation
+SetEnv[${SETUP}.cpusoftirq]: MRTG_INT_DESCR="CPU (SoftIRQ)"
+routers.cgi*Mode[${SETUP}.cpusoftirq]: cpu
+routers.cgi*Options[${SETUP}.cpusoftirq]: fixunit,nototal
+routers.cgi*Icon[${SETUP}.cpusoftirq]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.cpusoftirq]: no
+routers.cgi*InCompact[${SETUP}.cpusoftirq]: no
+routers.cgi*InSummary[${SETUP}.cpusoftirq]: no
+routers.cgi*Graph[${SETUP}.cpusoftirq]: userdefinedCPU total
+
+
+routers.cgi*Mode[userdefinedCPU]: cpu
+routers.cgi*ShortName[userdefinedCPU]: CPU Utilisation
+routers.cgi*Description[userdefinedCPU]: CPU Usage (U+N+W+K+H+S) on ${SETUP}
+routers.cgi*Title[userdefinedCPU]: CPU Usage (U+N+W+K+H+S) on ${SETUP}
+routers.cgi*Graphstyle[userdefinedCPU]: stack
+#routers.cgi*Unscaled[userdefinedCPU]: none
+routers.cgi*Icon[userdefinedCPU]: chip-sm.gif
+routers.cgi*Insummary[userdefinedCPU]: yes
+routers.cgi*MaxBytes[userdefinedCPU]: ${MAXCPU}
+routers.cgi*LegendTI[userdefinedCPU]: Total CPU(U+N+W+K+H+S)
+routers.cgi*LegendI[userdefinedCPU]: (U+N+W+K+H+S):
+routers.cgi*Colours[userdefinedCPU]: #00ff00 #ff0000 #00ccff #0000ff #ff9933 #ff00ff #000000
+#routers.cgi*Colours[userdefinedCPU]: #0000ff #00ff00 #ff0000 #00ccff #ffff00 #ff9933 #ff00ff #000000
+
+#
+#Number of blocks swapped in
+#
+#Number of blocks swapped out
+#
+#
+#Target[${SETUP}.swapinout]: .1.3.6.1.4.1.2021.11.62.0&.1.3.6.1.4.1.2021.11.63.0:${SNMPCOMMUNITY}@${SETUP}
+Target[${SETUP}.swapinout]: ssRawSwapIn.0&ssRawSwapOut.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.swapinout]: Number of blocks swapped in/out
+MaxBytes[${SETUP}.swapinout]: 1000000
+ShortLegend[${SETUP}.swapinout]:
+YLegend[${SETUP}.swapinout]: Blocks
+LegendI[${SETUP}.swapinout]: SwappedIn
+LegendO[${SETUP}.swapinout]: SwappedOut
+Legend1[${SETUP}.swapinout]: ssRawSwapIn
+Legend2[${SETUP}.swapinout]: ssRawSwapOut
+Legend3[${SETUP}.swapinout]: peak ssRawSwapIn
+Legend4[${SETUP}.swapinout]: peak ssRawSwapOut
+Options[${SETUP}.swapinout]: growright,nopercent,perminute
+
+#
+#Swap memory usage
+#
+Target[${SETUP}.swapmemory]:memTotalSwap.0&memTotalSwap.0:${SNMPCOMMUNITY}@${SETUP} - memAvailSwap.0&memAvailSwap.0:${SNMPCOMMUNITY}@${SETUP}
+MaxBytes[${SETUP}.swapmemory]: ${MAXSWAP}
+Factor[${SETUP}.swapmemory]: 1024
+Title[${SETUP}.swapmemory]:  Swap memory usage
+Unscaled[${SETUP}.swapmemory]: ymwd
+ShortLegend[${SETUP}.swapmemory]: B
+YLegend[${SETUP}.swapmemory]: Bytes
+Legend1[${SETUP}.swapmemory]: Swap memory in use
+Legend3[${SETUP}.swapmemory]: peak swap memory in use
+#Legend2[${SETUP}.swapmemory]: Swap memory in use
+LegendI[${SETUP}.swapmemory]: Swap memory in use
+#LegendO[${SETUP}.swapmemory]: Swap memory in use
+kMG[${SETUP}.swapmemory]: K,M,G,T,P
+Options[${SETUP}.swapmemory]: noo,gauge,growright,nopercent
+
+#
+#Swap memory 
+#
+Target[${SETUP}.swapavailtotal]: memAvailSwap.0&memTotalSwap.0:${SNMPCOMMUNITY}@${SETUP}
+MaxBytes[${SETUP}.swapavailtotal]: ${MAXSWAP}
+Factor[${SETUP}.swapavailtotal]: 1024
+Title[${SETUP}.swapavailtotal]:  available/total Swap Memory
+#Unscaled[${SETUP}.swapavailtotal]: ymwd
+ShortLegend[${SETUP}.swapavailtotal]: B
+YLegend[${SETUP}.swapavailtotal]: Bytes
+Legend1[${SETUP}.swapavailtotal]: memavailswap
+Legend2[${SETUP}.swapavailtotal]: memtotalswap
+Legend3[${SETUP}.swapavailtotal]: peak memavailswap
+Legend4[${SETUP}.swapavailtotal]: peak memtotalswap
+LegendI[${SETUP}.swapavailtotal]: available
+LegendO[${SETUP}.swapavailtotal]: total
+kMG[${SETUP}.swapavailtotal]: K,M,G,T,P
+Options[${SETUP}.swapavailtotal]: gauge,growright,nopercent
+
+#
+# Memory Monitoring (Total Versus Available Memory)
+#
+Target[${SETUP}.memory]: memAvailReal.0&memTotalReal.0:${SNMPCOMMUNITY}@${SETUP}
+MaxBytes[${SETUP}.memory]: ${MAXMEM}
+Factor[${SETUP}.memory]: 1024
+Title[${SETUP}.memory]: available/total Physical Memory
+PageTop[${SETUP}.memory]: <H1>Total Versus Available Physical Memory</H1>
+ShortLegend[${SETUP}.memory]: B
+YLegend[${SETUP}.memory]: Bytes
+LegendI[${SETUP}.memory]: available
+LegendO[${SETUP}.memory]: total
+Legend1[${SETUP}.memory]: memavailreal
+Legend2[${SETUP}.memory]: memtotalreal
+Legend3[${SETUP}.memory]: peak memavailreal
+Legend4[${SETUP}.memory]: peak memtotalreal
+Options[${SETUP}.memory]: gauge,growright,nopercent
+kMG[${SETUP}.memory]: k,M,G,T,P,X
+
+Target[${SETUP}.membuffered]: memBuffer.0&memBuffer.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.membuffered]: Memory Buffered Usage
+MaxBytes[${SETUP}.membuffered]: ${MAXMEM}
+Factor[${SETUP}.membuffered]: 1024
+PageTop[${SETUP}.membuffered]: null
+LegendI[${SETUP}.membuffered]: Buffered:
+Options[${SETUP}.membuffered]: gauge,growright,noo,nopercent
+YLegend[${SETUP}.membuffered]: Bytes
+ShortLegend[${SETUP}.membuffered]: B
+Legend1[${SETUP}.membuffered]: Buffered
+Legend3[${SETUP}.membuffered]: Peak Buffered
+SetEnv[${SETUP}.membuffered]: MRTG_INT_DESCR="memory buffered"
+kMG[${SETUP}.membuffered]: k,M,G,T,P,X
+Unscaled[${SETUP}.membuffered]: ymwd
+routers.cgi*Options[${SETUP}.membuffered]: nototal
+routers.cgi*Icon[${SETUP}.membuffered]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.membuffered]: no
+routers.cgi*InCompact[${SETUP}.membuffered]: no
+routers.cgi*InSummary[${SETUP}.membuffered]: no
+routers.cgi*Graph[${SETUP}.membuffered]: userdefinedFREEMEMORY total
+
+
+Target[${SETUP}.memcashed]: memCached.0&memCached.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.memcashed]: Memory Cached Usage
+MaxBytes[${SETUP}.memcashed]: ${MAXMEM}
+Factor[${SETUP}.memcashed]: 1024
+PageTop[${SETUP}.memcashed]: null
+LegendI[${SETUP}.memcashed]: Cached:
+Options[${SETUP}.memcashed]: gauge,growright,noo,nopercent
+YLegend[${SETUP}.memcashed]: Bytes
+ShortLegend[${SETUP}.memcashed]: B
+Legend1[${SETUP}.memcashed]: Cached
+Legend3[${SETUP}.memcashed]: Peak Cached
+SetEnv[${SETUP}.memcashed]: MRTG_INT_DESCR="memory cached"
+kMG[${SETUP}.memcashed]: k,M,G,T,P,X
+Unscaled[${SETUP}.memcashed]: ymwd
+routers.cgi*Options[${SETUP}.memcashed]: nototal
+routers.cgi*Icon[${SETUP}.memcashed]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.memcashed]: no
+routers.cgi*InCompact[${SETUP}.memcashed]: no
+routers.cgi*InSummary[${SETUP}.memcashed]: no
+routers.cgi*Graph[${SETUP}.memcashed]: userdefinedFREEMEMORY total
+
+
+Target[${SETUP}.memphysicalfree]: memAvailReal.0&memAvailReal.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.memphysicalfree]:  Physical Memory Free
+MaxBytes[${SETUP}.memphysicalfree]: ${MAXMEM}
+Factor[${SETUP}.memphysicalfree]: 1024
+PageTop[${SETUP}.memphysicalfree]: null
+LegendI[${SETUP}.memphysicalfree]: PhysicalFree:
+Options[${SETUP}.memphysicalfree]: gauge,growright,noo,nopercent
+YLegend[${SETUP}.memphysicalfree]: Bytes
+ShortLegend[${SETUP}.memphysicalfree]: B
+Legend1[${SETUP}.memphysicalfree]: PhysicalFree
+Legend3[${SETUP}.memphysicalfree]: Peak PhysicalFree
+SetEnv[${SETUP}.memphysicalfree]: MRTG_INT_DESCR="memory real physical available"
+kMG[${SETUP}.memphysicalfree]: k,M,G,T,P,X
+Unscaled[${SETUP}.memphysicalfree]: ymwd
+routers.cgi*Options[${SETUP}.memphysicalfree]: nototal
+routers.cgi*Icon[${SETUP}.memphysicalfree]: chip-sm.gif
+routers.cgi*InMenu[${SETUP}.memphysicalfree]: no
+routers.cgi*InCompact[${SETUP}.memphysicalfree]: no
+routers.cgi*InSummary[${SETUP}.memphysicalfree]: no
+routers.cgi*Graph[${SETUP}.memphysicalfree]: userdefinedFREEMEMORY total
+
+
+routers.cgi*ShortName[userdefinedFREEMEMORY]: Memory Free(free -m)
+routers.cgi*Description[userdefinedFREEMEMORY]: Memory Free (Buffered+Cashed+PhysicalFree) on ${SETUP}
+routers.cgi*Title[userdefinedFREEMEMORY]: Memory Free (Buffered+Cashed+PhysicalFree)on ${SETUP}
+routers.cgi*Graphstyle[userdefinedFREEMEMORY]: stack
+routers.cgi*Unscaled[userdefinedFREEMEMORY]: ymwd
+routers.cgi*Icon[userdefinedFREEMEMORY]: chip-sm.gif
+routers.cgi*Insummary[userdefinedFREEMEMORY]: yes
+routers.cgi*MaxBytes[userdefinedFREEMEMORY]: ${MAXMEM}
+routers.cgi*LegendTI[userdefinedFREEMEMORY]: Total(Buffered+Cashed+PhysicalFree)
+routers.cgi*LegendI[userdefinedFREEMEMORY]: (Buffered+Cashed+PhysicalFree):
+routers.cgi*kMG[userdefinedFREEMEMORY]: k,M,G,T,P,X
+routers.cgi*Colours[userdefinedFREEMEMORY]: #0000ff #00ff00 #ff0000 #000000
+
+#
+#Number of blocks sent to a block device
+#
+#Number of blocks received from a block device
+#
+#
+Target[${SETUP}.iosentreceived]: ssIORawSent.0&ssIORawReceived.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.iosentreceived]: Number of blocks sent/received from a block device
+MaxBytes[${SETUP}.iosentreceived]: 1000000
+ShortLegend[${SETUP}.iosentreceived]:
+YLegend[${SETUP}.iosentreceived]: Blocks
+LegendI[${SETUP}.iosentreceived]: sent
+LegendO[${SETUP}.iosentreceived]: received
+Legend1[${SETUP}.iosentreceived]: ssIORawSent
+Legend2[${SETUP}.iosentreceived]: ssIORawReceived
+Legend3[${SETUP}.iosentreceived]: peak ssIORawSent
+Legend4[${SETUP}.iosentreceived]: peak ssIORawReceived
+Options[${SETUP}.iosentreceived]: growright,nopercent,perminute
+
+#
+#The total number of UDP datagrams delivered to UDP
+#users.
+#The total number of UDP datagrams sent from this
+#entity.
+#
+Target[${SETUP}.udpinoutdatagrams]: udpInDatagrams.0&udpOutDatagrams.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.udpinoutdatagrams]: UDP datagrams received/sent
+MaxBytes[${SETUP}.udpinoutdatagrams]: 1000000
+ShortLegend[${SETUP}.udpinoutdatagrams]: 
+YLegend[${SETUP}.udpinoutdatagrams]: Datagrams
+LegendI[${SETUP}.udpinoutdatagrams]: received
+LegendO[${SETUP}.udpinoutdatagrams]: sent
+Legend1[${SETUP}.udpinoutdatagrams]: udpindatagrams
+Legend2[${SETUP}.udpinoutdatagrams]: udpoutdatagrams
+Legend3[${SETUP}.udpinoutdatagrams]: peak udpindatagrams
+Legend4[${SETUP}.udpinoutdatagrams]: peak udpoutdatagrams
+Options[${SETUP}.udpinoutdatagrams]: growright,nopercent,perminute
+#
+#The total number of received UDP datagrams for which
+#there was no application at the destination port.
+#
+#The number of received UDP datagrams that could not be
+#delivered for reasons other than the lack of an
+#application at the destination port.
+#
+Target[${SETUP}.udpinouterrdatagrams]: udpNoPorts.0&udpInErrors.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.udpinouterrdatagrams]: UDP datagrams received no app at dest ports/other errors
+MaxBytes[${SETUP}.udpinouterrdatagrams]: 100000
+ShortLegend[${SETUP}.udpinouterrdatagrams]: 
+YLegend[${SETUP}.udpinouterrdatagrams]: Datagrams
+LegendI[${SETUP}.udpinouterrdatagrams]: noports
+LegendO[${SETUP}.udpinouterrdatagrams]: inerrors
+Legend1[${SETUP}.udpinouterrdatagrams]: udpnoports
+Legend2[${SETUP}.udpinouterrdatagrams]: udpinerrors
+Options[${SETUP}.udpinouterrdatagrams]: growright,nopercent,perminute
+
+#
+# New TCP Connection Monitoring (per minute)
+#
+Target[${SETUP}.newconns]: tcpPassiveOpens.0&tcpActiveOpens.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.newconns]: TCP newly created inbound/outbound connections
+MaxBytes[${SETUP}.newconns]: 10000000000
+ShortLegend[${SETUP}.newconns]: conns/m
+YLegend[${SETUP}.newconns]: Conns / Min
+LegendI[${SETUP}.newconns]: inbound
+LegendO[${SETUP}.newconns]: outbound
+Legend1[${SETUP}.newconns]: tcppassiveopens
+Legend2[${SETUP}.newconns]: tcpactiveopens
+Options[${SETUP}.newconns]: growright,nopercent,perminute
+#
+#The total number of segments received, including those
+#received in error.  This count includes segments received
+#on currently established connections.
+#The total number of segments sent, including those on
+#current connections but excluding those containing only
+#retransmitted octets.
+#
+Target[${SETUP}.tcpinoutsegs]: tcpInSegs.0&tcpOutSegs.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.tcpinoutsegs]: TCP segments received/sent
+MaxBytes[${SETUP}.tcpinoutsegs]: 10000000000
+ShortLegend[${SETUP}.tcpinoutsegs]: 
+YLegend[${SETUP}.tcpinoutsegs]: Segments
+LegendI[${SETUP}.tcpinoutsegs]: received
+LegendO[${SETUP}.tcpinoutsegs]: sent
+Legend1[${SETUP}.tcpinoutsegs]: tcpinsegs
+Legend2[${SETUP}.tcpinoutsegs]: tcpoutsegs
+Options[${SETUP}.tcpinoutsegs]: growright,nopercent,perminute
+
+#
+#The number of times that TCP connections have made a direct
+#transition to the CLOSED state from either the SYN-SENT
+#state or the SYN-RCVD state, plus the number of times that
+#TCP connections have made a direct transition to the
+#LISTEN state from the SYN-RCVD state.
+#
+# The number of times that TCP connections have made a direct
+#transition to the CLOSED state from either the ESTABLISHED
+#state or the CLOSE-WAIT state.
+#
+Target[${SETUP}.tcpattempfailsestabresets]: tcpAttemptFails.0&tcpEstabResets.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.tcpattempfailsestabresets]: TCP state SYN-SENT(SYN_RCVD)->CLOSED/ESTABLISHED->CLOSED
+MaxBytes[${SETUP}.tcpattempfailsestabresets]: 1000000
+ShortLegend[${SETUP}.tcpattempfailsestabresets]:
+YLegend[${SETUP}.tcpattempfailsestabresets]: times
+LegendI[${SETUP}.tcpattempfailsestabresets]: tcpattempfails
+LegendO[${SETUP}.tcpattempfailsestabresets]: tcpestabresets
+Legend1[${SETUP}.tcpattempfailsestabresets]: tcpattemfails
+Legend2[${SETUP}.tcpattempfailsestabresets]: tcpestabresets
+Options[${SETUP}.tcpattempfailsestabresets]: growright,nopercent,perminute
+
+#
+#The total number of segments retransmitted; that is, the
+#number of TCP segments transmitted containing one or more
+#previously transmitted octets.
+#
+Target[${SETUP}.tcpsegsretrans]: tcpRetransSegs.0&tcpRetransSegs.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.tcpsegsretrans]: TCP segments retransmitted
+MaxBytes[${SETUP}.tcpsegsretrans]: 1000000
+ShortLegend[${SETUP}.tcpsegsretrans]:
+YLegend[${SETUP}.tcpsegsretrans]: Segments
+LegendI[${SETUP}.tcpsegsretrans]: tcpretranssegs
+Legend1[${SETUP}.tcpsegsretrans]: tcpretranssegs
+Options[${SETUP}.tcpsegsretrans]: noo,growright,nopercent,perminute
+
+#
+#The total number of segments received in error (e.g., bad
+#TCP checksums).
+#The number of TCP segments sent containing the RST flag.
+#
+Target[${SETUP}.tcpinerrsoutrsts]: tcpInErrs.0&tcpOutRsts.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.tcpinerrsoutrsts]: TCP segments received in error/sent containing the RST flag.
+MaxBytes[${SETUP}.tcpinerrsoutrsts]: 1000000
+ShortLegend[${SETUP}.tcpinerrsoutrsts]:
+YLegend[${SETUP}.tcpinerrsoutrsts]: Segments
+LegendI[${SETUP}.tcpinerrsoutrsts]: tcpinerrs
+LegendO[${SETUP}.tcpinerrsoutrsts]: tcpoutrsts
+Legend1[${SETUP}.tcpinerrsoutrsts]: tcpinerrs
+Legend2[${SETUP}.tcpinerrsoutrsts]: tcpoutrsts
+Options[${SETUP}.tcpinerrsoutrsts]: growright,nopercent,perminute
+
+#
+# Established TCP Connections
+#
+Target[${SETUP}.estabcons]: tcpCurrEstab.0&tcpCurrEstab.0:${SNMPCOMMUNITY}@${SETUP}
+Title[${SETUP}.estabcons]: TCP connections currently established
+MaxBytes[${SETUP}.estabcons]: 10000000000
+ShortLegend[${SETUP}.estabcons]:
+#YLegend[${SETUP}.estabcons]: Connections
+LegendI[${SETUP}.estabcons]: tcpcurrestab
+Legend1[${SETUP}.estabcons]: tcpcurrestab
+Options[${SETUP}.estabcons]: noo,growright,nopercent,gauge
+
+#
+#Load Average 1 and 5 minute
+#
+Target[${SETUP}.loadavg]: laLoadInt.1&laLoadInt.2:${SNMPCOMMUNITY}@${SETUP}
+MaxBytes[${SETUP}.loadavg]: 40000
+AbsMax[${SETUP}.loadavg]: 40000
+Title[${SETUP}.loadavg]: Load avg 1 and 5 minute
+#YLegend[${SETUP}.loadavg]: Load avg
+Legend1[${SETUP}.loadavg]: Load avg 1 minute
+Legend2[${SETUP}.loadavg]: Load avg 5 minute
+LegendI[${SETUP}.loadavg]: Load avg 1 minute
+LegendO[${SETUP}.loadavg]: Load avg 5 minute
+ShortLegend[${SETUP}.loadavg]: Lavg
+kMG[${SETUP}.loadavg]: K,M,G,T,P
+Options[${SETUP}.loadavg]: growright,gauge,nopercent
+
+##
+##TotalProcesses&TotalUsers
+##
+#Target[${SETUP}.processesandusers]:hrSystemNumUsers.0&hrSystemProcesses.0:${SNMPCOMMUNITY}@${SETUP}
+#MaxBytes[${SETUP}.processesandusers]: 10000
+#Title[${SETUP}.processesandusers]: totalusers/totalprocesses
+##Unscaled[${SETUP}.processesandusers]: ymwd
+#YLegend[${SETUP}.processesandusers]: 
+#Legend1[${SETUP}.processesandusers]: TotalUsers
+#Legend2[${SETUP}.processesandusers]: TotalProcesses
+#LegendI[${SETUP}.processesandusers]: TotalUsers
+#LegendO[${SETUP}.processesandusers]: TotalProcesses
+#ShortLegend[${SETUP}.processesandusers]: 
+#kMG[${SETUP}.processesandusers]: K,M,G,T,P
+#Options[${SETUP}.processesandusers]: growright,gauge,nopercent
+
